@@ -19,7 +19,8 @@ public class Acceptor {
         try {
             socketAcceptor.start();
         } catch (ConfigError configError) {
-            System.out.println();
+            LOG.error("failed to start acceptor", configError);
+            throw new RuntimeException(configError);
         }
     }
 
