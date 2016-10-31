@@ -9,7 +9,8 @@ import quickfix.SocketInitiator;
 import quickfix.fix44.Message;
 
 public class Initiator {
-    private final static Logger LOG = LoggerFactory.getLogger(Initiator.class);
+    private static final Logger LOG = LoggerFactory.getLogger(Initiator.class);
+    private static final int WAIT_TIME = 5000;
 
     private final SocketInitiator socketInitiator;
     private Session session;
@@ -47,7 +48,7 @@ public class Initiator {
         while (!session.isLoggedOn()) {
             try {
                 LOG.info("Still not logged in. Waiting...");
-                Thread.sleep(10000);
+                Thread.sleep(WAIT_TIME);
             } catch (InterruptedException e) {
                 LOG.warn("logon interrupted");
                 return;
