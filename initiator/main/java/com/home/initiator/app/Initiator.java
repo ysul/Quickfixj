@@ -44,10 +44,10 @@ public class Initiator {
     }
 
     private void logon() {
-        LOG.info("waiting to logon...");
+        LOG.info("logon...");
         while (!session.isLoggedOn()) {
             try {
-                LOG.info("Still not logged in. Waiting...");
+                LOG.info("Still not logged in, waiting...");
                 Thread.sleep(WAIT_TIME);
             } catch (InterruptedException e) {
                 LOG.warn("logon interrupted");
