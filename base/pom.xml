@@ -12,7 +12,8 @@
     </parent>
 
     <groupId>com.home.quickfix</groupId>
-    <artifactId>initiator</artifactId>
+    <artifactId>base</artifactId>
+    <version>1.0-SNAPSHOT</version>
 
     <dependencies>
         <dependency>
@@ -20,26 +21,8 @@
             <artifactId>quickfixj-core</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.quickfixj</groupId>
-            <artifactId>quickfixj-messages-fix44</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-        </dependency>
-        <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.home.quickfix</groupId>
-            <artifactId>base</artifactId>
-            <version>${version}</version>
-        </dependency>
     </dependencies>
-
 </project>

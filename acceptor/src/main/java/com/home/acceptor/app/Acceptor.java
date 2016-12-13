@@ -22,6 +22,7 @@ public class Acceptor {
             LOG.error("failed to start acceptor", configError);
             throw new RuntimeException(configError);
         }
+        LOG.info("acceptor is started");
     }
 
     public void stop() {

@@ -2,6 +2,7 @@ package com.home.acceptor.spring;
 
 import com.home.acceptor.app.Acceptor;
 import com.home.acceptor.app.AcceptorApplication;
+import com.home.base.session.SessionStore;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import quickfix.*;
@@ -14,12 +15,17 @@ public class Config {
     @Bean(initMethod = "start", destroyMethod = "stop")
     public Acceptor acceptor() throws ConfigError {
         SessionSettings executorSettings = new SessionSettings(ACCEPTOR_CFG);
-        Application application = new AcceptorApplication();
-        FileStoreFactory fileStoreFactory = new FileStoreFactory(executorSettings);
+        Application application = new AcceptorApplication(new SessionStore());
+        FileStoreFactory fileStoreFactory =
+                new FileStoreFactory(executorSettings);
         MessageFactory messageFactory = new DefaultMessageFactory();
         FileLogFactory fileLogFactory = new FileLogFactory(executorSettings);
-        SocketAcceptor socketAcceptor = new SocketAcceptor(application, fileStoreFactory,
-                executorSettings, fileLogFactory, messageFactory);
+        SocketAcceptor socketAcceptor = new SocketAcceptor(
+                application,
+                fileStoreFactory,
+                executorSettings,
+                fileLogFactory,
+                messageFactory);
         return new Acceptor(socketAcceptor);
     }
 }
