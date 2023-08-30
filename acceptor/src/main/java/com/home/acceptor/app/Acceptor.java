@@ -15,18 +15,18 @@ public class Acceptor {
     }
 
     public void start() {
-        LOG.info("starting acceptor...");
+        LOG.info("Starting acceptor...");
         try {
             socketAcceptor.start();
         } catch (ConfigError configError) {
             LOG.error("failed to start acceptor", configError);
             throw new RuntimeException(configError);
         }
-        LOG.info("acceptor is started");
+        LOG.info("Acceptor is started");
     }
 
     public void stop() {
-        LOG.info("stopping acceptor...");
+        LOG.info("Stopping acceptor...");
         socketAcceptor.stop();
     }
 }
